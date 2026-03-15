@@ -74,8 +74,7 @@ python3 /tmp/convert_only.py logs/new_capture.bin logs/new_capture.mi2log
 ---
 
 ## 5. Parsing .mi2log to CSV (Feature Extraction)
-
-We take the parsed packets and flatten them into a single chronological CSV using the script you developed earlier. This extracts only the necessary features for ML (RRC message types, MAC grants, buffer status).
+Took the parsed packets and flatten them into a single chronological CSV using the script you developed earlier. This extracts only the necessary features for ML (RRC message types, MAC grants, buffer status).
 
 **Command:**
 ```bash
@@ -243,7 +242,7 @@ NAS messages were sparse in both scenarios. The EMM outgoing messages in the dat
 
 ### Attempted Extraction
 
-We investigated whether PHY layer measurements (RSRP, RSRQ, CQI, SINR) were available:
+Investigated whether PHY layer measurements (RSRP, RSRQ, CQI, SINR) were available:
 
 | Check | Result |
 |:---|:---|
