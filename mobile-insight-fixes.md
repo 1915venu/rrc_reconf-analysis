@@ -17,32 +17,32 @@
 ---
 
 ## Slide 3: The Tooling Challenge - MobileInsight
-**Title:** Challenges with MobileInsight v6.0.0
+**Title:** Technical Challenges with MobileInsight v6.0.0
 **Talking Points:**
 To capture low-level radio data, we relied on the open-source MobileInsight telemetry tool. However, out of the box, it was fundamentally broken for our modern environment (Ubuntu 24.04, Python 3.12) and our newer 5G chipset (Snapdragon 8 Gen 2 / OnePlus 11R).
 
-**Key Issues Encountered:**
-1.  **Python 3.12 Incompatibility:** The core `dm_collector_c` C++ library caused hard segmentation faults due to outdated Python API calls (`Py_ssize_t` casting issues).
-2.  **Wireshark Dissector Failures:** The traditional way to view MobileInsight logs is exporting them to PCAP for Wireshark. However, their `ws_dissector` integration was completely broken for modern Wireshark versions, preventing cross-layer inspection.
-3.  **Missing MAC Support for SnapDragon 8 Gen 2:** The C-decoder threw "Unknown packet version" errors for LTE MAC Uplink/Downlink Transport blocks because Qualcomm updated their diagnostic packet headers (to version `0x30` and `0x32`), which MobileInsight did not recognize.
-4.  **Missing PHY Data:** The Qualcomm modem wasn't sending PHY packets (RSRP/RSRQ) by default. The capture script uses standard equipment IDs but lacks the specific, undocumented Qualcomm diagnostic (`0x73`) commands required to enable raw PHY metrics.
+**Deep Technical Issues Encountered:**
+1.  **Mobile App vs. Laptop Capture (OS Limitations):** We initially attempted to use the MobileInsight Android `.apk` directly on the device. However, on Android 15, aggressive SELinux policies and restricted access to `/dev/diag` caused the app to throw "unsupported chipset" errors. We pivoted to a **laptop-based approach**, using ADB to route the Qualcomm Diagnostic USB interface (`sys.usb.config diag,adb`) directly to a Linux serial port (`/dev/ttyUSB0`), bypassing the Android OS sandboxing entirely.
+2.  **C-Level Segmentation Faults (Python 3.12 API Breaking Change):** The core `dm_collector_c` C++ library caused hard segmentation faults the moment it attempted to parse a packet. Root cause: MobileInsight uses deprecated C-API calls (`PyArg_ParseTupleAndKeywords`) that expect `int` lengths, but Python 3.12 strictly enforces `Py_ssize_t`. This caused massive memory corruption during hardware log ingestion.
+3.  **Missing MAC Support for SnapDragon 8 Gen 2:** The C-decoder threw "Unknown packet version" errors and dropped all LTE MAC packets. Root cause: The OnePlus 11R's newer modem SDK shifted MAC Transport Block header versions from `v0x24` to `v0x30` (Uplink) and `v0x32` (Downlink), rendering MobileInsight's internal `log_packet.cpp` switch-case statements useless.
+4.  **Missing PHY Data (Undocumented Diag Commands):** The default capture script enables log masks by "Equipment ID" (which covers RRC/MAC/NAS), but fails to capture PHY layer metrics (RSRP/RSRQ/SINR). Root cause: Qualcomm modems require highly specific, undocumented `0x73` (Log Config) diagnostic command payloads to explicitly turn on individual PHY sub-packet streams (like `0xB193` for Serving Cell Measurements).
 
 ---
 
 ## Slide 4: Engineering Solutions & Custom Parser
-**Title:** Patching the Pipeline & Creating our own Parser
+**Title:** Patching the C++ Pipeline & Bypassing Wireshark
 **Talking Points:**
-Because the default toolchain was failing, we reverse-engineered and patched the C++ source code. More importantly, we abandoned the Wireshark UI approach entirely to build an ML-ready pipeline.
+Because the default toolchain was failing at the memory, decoding, and processing layers, we reverse-engineered the source code to build a Custom Extraction Pipeline optimized specifically for Machine Learning.
 
-**Our Fixes:**
-1.  **C-Level Memory Fixes:** Patched `dm_collector_c` to safely handle Python 3.12 tuples, eliminating the segmentation faults.
-2.  **MAC Version Patching:** Modified `log_packet.cpp` and `consts.h` to recognize the OnePlus 11R's newer MAC packet versions, successfully restoring 100% visibility of MAC grants and buffers.
-3.  **Custom Extraction Pipeline (Why we built our own parser):** 
-    *   **The "Why":** Wireshark is great for visual inspection by humans, but terrible for training Machine Learning models because extracting correlated cross-layer features from PCAPs is slow and error-prone.
-    *   **The "How":** We wrote a custom Python parser (`parse_logs_to_csv.py`) that hooks directly into the MobileInsight analyzer loop (the `OfflineReplayer`), flattening complex ASN.1 XML trees and MAC sub-headers into a chronological CSV.
-4.  **Validation Strategy (How we know the parser is right):**
-    *   *Core Engine Trust*: Our parser doesn't guess bits. It hooks into MobileInsight's core `dm_collector_c` engine, which uses official **3GPP ASN.1 templates**. We bypassed the broken formatting layer, not the math.
-    *   *Protocol Verification*: We mathematically proved the parser's accuracy. For example, when we initiated a Voice Call, our parser perfectly extracted **LCID 8** (the standard QCI-1 dedicated bearer for VoLTE), sandwiched between two NAS ESM bearer-setup messages. The network protocol behavior perfectly matches our parser's CSV output.
+**Our Technical Fixes:**
+1.  **C-Level Memory Fixes:** We manually patched the `msg_len` variables in `dm_collector_c` from standard C `int` to `Py_ssize_t` to satisfy Python 3.12's strict C-API memory requirements, immediately resolving all segmentation faults and restoring runtime stability.
+2.  **MAC Version Patching & Recompilation:** We modified the core decoding engine (`log_packet.cpp` and `consts.h`). We added new `case` statements for the `v0x30` and `v0x32` headers and mapped them to the existing payload extraction logic. We then recompiled the `dm_collector_c.so` shared object, successfully restoring 100% visibility of the vital MAC grants and buffer status reports.
+3.  **Why We Abandoned Wireshark (The Parser Necessity):** 
+    *   **The Wireshark Limitation (RRC vs. MAC mismatch):** We initially built the `ws_dissector` script to dump logs to a PCAP. Wireshark's built-in ASN.1 templates successfully decrypted and visualized the rich **RRC signaling trees**. However, the **MAC payload dissection remained opaque** because MobileInsight's GSMTAP encapsulation mapped the proprietary Qualcomm MAC sub-headers incorrectly, breaking Wireshark's GUI view.
+    *   **The "Why" (Data Structural Conflict):** We needed programmatic, structural access to the multiplexed MAC LCIDs (Data Pipes) and BSRs (Buffer Reports) to mathematically correlate them with RRC events. Wireshark is designed for human visual inspection. Attempting to extract deeply nested, multiplexed MAC headers out of a visual PCAP file into a flat Machine-Learning feature vector is computationally slow, lossy, and highly error-prone.
+4.  **The Custom Parser Architecture (`parse_logs_to_csv.py`):**
+    *   **The "How":** We wrote a Python observer class that hooks directly into the MobileInsight `OfflineReplayer` event loop. It intercepts the decoded dictionaries *before* they are ever formatted for Wireshark or the GUI. It natively traverses the ASN.1 ElementTrees and unpacks the MAC sub-header arrays in pure Python, flattening them into a high-octane, chronologically ordered CSV.
+    *   **Validation Strategy (How we know it's mathematically sound):** We bypassed the broken formatting layer, but importantly, we did *not* reinvent the decoding math. We rely entirely on the official 3GPP ASN.1 templates hardcoded into the C++ engine. We proved our parser's accuracy behaviorally: for example, the moment our script detected a Voice Call initiation (via NAS ESM), our parser perfectly extracted the activation of **LCID 8** (the 3GPP standard QCI-1 dedicated bearer for VoLTE). Our extracted data matches the theoretical LTE specifications flawlessly.
 
 ---
 
