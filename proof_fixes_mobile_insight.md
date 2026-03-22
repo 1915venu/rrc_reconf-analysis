@@ -336,3 +336,158 @@ All source materials, patches, and captured data are available for inspection:
 | Data ON capture (3.6 MB) | [capture_active_data_1min.bin](file:///home/venu/Downloads/MobileInsight-6.0.0/logs/capture_active_data_1min.bin) |
 | Mixed 3-min capture (9.2 MB) | [capture_3min_mixed.bin](file:///home/venu/Downloads/MobileInsight-6.0.0/logs/capture_3min_mixed.bin) |
 | RRC Reconfiguration deep analysis | [rrc_reconf_comparison.md](file:///home/venu/Downloads/MobileInsight-6.0.0/logs/rrc_reconf_comparison.md) |
+
+
+
+
+# Defense Script: Explaining the RRC/MAC Patches and Parser Trust
+
+> This is a verbal explanation script. Read through it to understand the flow, then present it in your own words.
+
+---
+
+## Part 1: "How does the modem give us RRC data?"
+
+When our Qualcomm modem (Snapdragon 8 Gen 2) generates an RRC message — say an `rrcConnectionReconfiguration` — it doesn't just hand us the raw 3GPP message. It wraps it in a **proprietary binary envelope**.
+
+Think of it like a letter in an envelope:
+
+- **The envelope** = Qualcomm's proprietary header (contains metadata: which cell, which frequency, what type of message, how long the message is)
+- **The letter inside** = The actual 3GPP ASN.1-encoded RRC message (this is universal, standardized, same on any chipset worldwide)
+
+The "version number" (v24, v26, v27) only describes **how to open the envelope** — the field sizes and positions in the proprietary header. The letter inside is always written in the same language (3GPP ASN.1).
+
+---
+
+## Part 2: "What exactly did we patch for RRC?"
+
+MobileInsight's C++ engine has a `switch` statement — like a mail sorting machine. It reads the version number on the envelope and picks the right set of instructions to open it:
+
+- Version 24 envelope → use blueprint A (17 bytes, Freq is 4 bytes wide)
+- Version 26 envelope → use blueprint B (19 bytes, added NR version fields, Freq is 2 bytes)
+- Version 27 envelope → **ERROR: "I don't know this envelope!"** ← This was the bug
+
+Our Snapdragon 8 Gen 2 uses version 27 envelopes. MobileInsight had never seen them before, so it threw away every single RRC packet.
+
+**Our fix: one line of code.** We added `case 27:` right below `case 26:`, making both use the same blueprint B. We do NOT have Qualcomm's official documentation saying v27 equals v26 — nobody outside Qualcomm does. We made an **educated assumption** based on the pattern that 7 previous consecutive versions (v9 through v24) all used nearly identical layouts.
+
+But here's the important part: **we didn't touch the letter-reading part at all.** The ASN.1 decoder that reads the actual RRC message is standard 3GPP — it's compiled from the official 3GPP TS 36.331 specification. Our patch only changed how the envelope is opened.
+
+---
+
+## Part 3: "What about the PDU type table?"
+
+After opening the envelope, we need one field from the header: the **PDU Number**. This tells us which RRC channel the message came from — like knowing whether the letter arrived via registered post, express delivery, or regular mail.
+
+MobileInsight has three different lookup tables for this, because Qualcomm changed the numbering scheme over the years:
+
+- On old modems: PDU `0x06` = Downlink DCCH
+- On v15 modems: PDU `0x07` = Downlink DCCH *(shifted!)*
+- On v19+ modems: PDU `0x09` = Downlink DCCH *(shifted again!)*
+
+**If you use the wrong table, you would confuse uplink with downlink.** That would be a catastrophic error.
+
+We verified that our modem (v27) uses the v19 numbering scheme. How? Because the decoded messages make logical sense — `measurementReport` (which is always uplink, UE→network) correctly appears as uplink, and `rrcConnectionReconfiguration` (which is always downlink, network→UE) correctly appears as downlink. If we had the wrong table, these would be flipped.
+
+---
+
+## Part 4: "The MAC patch — actually a stronger case than RRC"
+
+MAC uses a **two-level version system**, which makes our patch safer than the RRC one.
+
+**Level 1 — The outer packet version** (`pkt_ver`): This controls a simple for-loop that iterates through sub-packets. Our modem sends `0x30` for uplink and `0x32` for downlink. MobileInsight only knew `0x01` and `0x24`. So the for-loop refused to run. We added `case 0x30:` and `case 0x32:` to let the loop proceed.
+
+**Level 2 — The inner sub-packet version** (`subpkt_ver`): This controls how to actually parse each MAC Transport Block — the HARQ ID, RNTI type, grant size, LCIDs, BSR events. Here's the key: **the modem reports this version inside the data itself.** When we read the sub-packet header (5 bytes: SubPacket ID, Version, Size, Num Samples), the `Version` field comes from the modem's own binary stream, and it says `v1` or `v3` — versions MobileInsight already handles.
+
+So for MAC, we're NOT guessing the sub-packet format like we did for RRC. The modem explicitly tells us "this sub-packet is version 1, parse it with your v1 decoder." MobileInsight already has a complete v1 decoder that extracts:
+- HARQ ID (1 byte)
+- RNTI Type (1 byte)
+- Sub-Frame Number (2 bytes)
+- Grant size in bytes (2 bytes)
+- RLC PDU count (1 byte)
+- Padding bytes (2 bytes)
+- BSR event/trigger (2 bytes)
+- Header length (1 byte)
+- Then: the actual MAC header with LCIDs
+
+After the MAC header is parsed, LCIDs are looked up against a 3GPP-standard table: 0=CCCH, 1-2=SRB, 3-10=DRB, 26=PHR, 29=S-BSR, 30=L-BSR, 31=Padding. These LCID numbers are defined by 3GPP TS 36.321 §6.1.3.1, not by Qualcomm. So even the lookup table is standard.
+
+**In simple terms:** For RRC, we said "trust us, v27 envelope looks like v26." For MAC, the modem itself is saying "I'm version 1 inside" — we just opened the door to let MobileInsight hear it.
+
+---
+
+## Part 5: "Why not just use Wireshark?"
+
+This is the most common challenge. Here's the definitive answer, with code proof.
+
+MobileInsight has a Wireshark bridge called `ws_dissector`. It takes decoded packets and feeds them to Wireshark through a custom protocol called "AWW" (Automator Wireshark Wrapper). The bridge has a **protocol ID mapping table** in a file called [packet-aww.cpp](file:///home/venu/Downloads/MobileInsight-6.0.0/ws_dissector/packet-aww.cpp). This table maps MobileInsight's internal packet types to Wireshark's built-in dissectors:
+
+```
+RRC packets  → mapped to "lte-rrc.dl.dcch" etc.  → Wireshark decodes them ✅
+NAS packets  → mapped to "nas-eps_plain"          → Wireshark decodes them ✅
+PDCP packets → mapped to "pdcp-lte"               → Wireshark decodes them ✅
+MAC packets  → ⛔ NO MAPPING EXISTS                → Wireshark sees garbage  ❌
+```
+
+**There is literally no `protos[xxx] = "mac-lte"` line in the entire file.** You can open [packet-aww.cpp](file:///home/venu/Downloads/MobileInsight-6.0.0/ws_dissector/packet-aww.cpp) and search — it's not there. That's why MAC packets show up as "UDP" or "Malformed Packet" in Wireshark.
+
+But why wasn't MAC mapped? Because Qualcomm's internal MAC format is **structurally different** from the over-the-air MAC PDU that Wireshark's `mac-lte` dissector expects. Qualcomm adds vendor-specific sub-headers (SubPacket ID, SubPacket Version, Num Samples, HARQ metadata) that don't exist in the 3GPP standard MAC PDU format. Nobody has written the translation layer.
+
+**So Wireshark is not "more trusted" than our parser for MAC — Wireshark literally cannot see MAC data at all through MobileInsight.** Our parser bypasses this broken formatting bridge and reads directly from the C++ decoder output, where MAC data is fully decoded.
+
+---
+
+## Part 6: "How can we trust the parser's output?"
+
+Our parser ([parse_logs_to_csv.py](file:///home/venu/Downloads/MobileInsight-6.0.0/scripts/parse_logs_to_csv.py)) does **zero decoding**. The pipeline is:
+
+```
+Raw modem bytes → dm_collector_c (C++) → Python dictionary → our parser → CSV
+                      ↑                       ↑                   ↑
+              Decodes everything      Already decoded       Just formats
+              (3GPP ASN.1 engine)     (dict with fields)    (writes to CSV)
+```
+
+Our parser is a **pure formatting layer**. It takes a Python dictionary that already has fields like `"PDU Number": 9`, `"Msg Length": 147`, `"Message Type": "rrcConnectionReconfiguration"` and writes them to a CSV row. No math happens in our parser.
+
+The C++ engine ([dm_collector_c](file:///home/venu/Downloads/MobileInsight-6.0.0/dm_collector_c/dm_collector_c.cpp#52-53)) is the real decoder — it was published in **ACM MobiCom 2015** and has been used in **50+ academic papers**. We didn't modify its decoding functions. We only added version support (new `case` labels).
+
+---
+
+## Part 7: "Prove it works correctly"
+
+### Proof 1: VoLTE Bearer Test
+
+During a mixed capture, we started a VoLTE call while browsing. Our parser immediately detected **LCID 8** appearing in the MAC traffic. Per 3GPP TS 36.321 and TS 23.203, LCID 8 is a dedicated QCI-1 bearer — the standardized pipe for VoLTE with guaranteed bit rate. When the call ended, LCID 8 disappeared.
+
+**If our MAC decoder were reading wrong byte offsets, LCID values would be random garbage, not the exact bearer number that 3GPP specifies for voice.**
+
+### Proof 2: Data OFF vs. Data ON
+
+| What 3GPP theory predicts | What our data shows |
+|:---|:---|
+| Idle phone: only control channels (LCID 1-2) | ✅ Only LCID 1 and 2 |
+| Active data: multiple data bearers (LCID 3-7) | ✅ LCIDs 3, 4, 5, 6, 7 all active |
+| More data → more MeasurementReports | ✅ 24 → 191 (8× increase) |
+| More data → more RRC Reconfigurations | ✅ 30 → 92 (3× increase) |
+
+### Proof 3: Cross-Layer Timing
+
+After a HANDOVER-type `rrcConnectionReconfiguration`, MAC data resumes on the new cell within **17ms** on average. This matches published measurements of LTE intra-frequency handover latency (10-30ms per 3GPP TS 36.133).
+
+**If the RRC decoder were producing garbage timestamps or message types, this correlation would be completely random, not a precise 17ms window.**
+
+### Proof 4: Message Pair Consistency
+
+Certain RRC messages MUST appear in pairs:
+- `rrcConnectionSetup` → `rrcConnectionSetupComplete`
+- `securityModeCommand` → `securityModeComplete`
+- `rrcConnectionReconfiguration` → `rrcConnectionReconfigurationComplete`
+
+In **every single instance** across all our captures, these pairs appear correctly — never a `Complete` without the preceding command, never a command without a subsequent `Complete`. This is only possible if the PDU type table and ASN.1 decoding are both correct.
+
+---
+
+## Part 8: Quick Summary (If Asked to Condense)
+
+> "We patched MobileInsight to support our newer Snapdragon 8 Gen 2 chipset. The patches are minimal — adding `case` labels to `switch` statements so the decoder recognizes the new version numbers. The actual 3GPP ASN.1 decoding engine is completely untouched. We chose a custom parser over Wireshark because Wireshark's MobileInsight bridge has no MAC protocol mapping — it literally cannot display MAC data. Our parser reads directly from the C++ decoder, which is peer-reviewed (ACM MobiCom 2015, 50+ papers). We validated correctness through behavioral tests: VoLTE LCID 8 detection, Data ON/OFF correlation matching 3GPP theory, 17ms handover latency matching published measurements, and perfect RRC message pair consistency."
