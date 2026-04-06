@@ -1,0 +1,7 @@
+[2026-04-06 16:23:48] Logs will be saved to: /home/venu/Desktop/ueautomation/logs/20260406_162348
+[2026-04-06 16:23:48] >>> Starting Scenario 4: VoiceCall
+[2026-04-06 16:23:50] Radio is OFF (Confirmed via Settings).
+[2026-04-06 16:23:56] Data Connection Established. Stabilizing for 2s...
+[2026-04-06 16:23:58]   -> Running: Voice Call (30 s) to 9310524847
+[2026-04-06 16:24:01] Initiating call to 9310524847...
+[2026-04-06 16:24:37] >>> Completed Scenario 4

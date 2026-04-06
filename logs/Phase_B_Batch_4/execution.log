@@ -1,0 +1,18 @@
+[2026-04-06 16:39:25] Logs will be saved to: /home/venu/Desktop/ueautomation/logs/20260406_163925
+[2026-04-06 16:39:25] >>> Starting Scenario 1: Browsing
+[2026-04-06 16:39:27] Radio is OFF (Confirmed via Settings).
+[2026-04-06 16:39:33] Data Connection Established. Stabilizing for 2s...
+[2026-04-06 16:39:35]   -> Running: Browsing (60 s)
+[2026-04-06 16:39:35]      Visiting: https://www.google.com
+[2026-04-06 16:39:35] Opening URL: https://www.google.com
+[2026-04-06 16:39:45]      Visiting: https://www.cnn.com
+[2026-04-06 16:39:45] Opening URL: https://www.cnn.com
+[2026-04-06 16:39:56]      Visiting: https://www.cnn.com/world
+[2026-04-06 16:39:56] Opening URL: https://www.cnn.com/world
+[2026-04-06 16:40:06]      Visiting: https://www.theverge.com
+[2026-04-06 16:40:06] Opening URL: https://www.theverge.com
+[2026-04-06 16:40:17]      Visiting: https://www.reddit.com
+[2026-04-06 16:40:17] Opening URL: https://www.reddit.com
+[2026-04-06 16:40:27]      Visiting: https://www.reddit.com/r/technology
+[2026-04-06 16:40:27] Opening URL: https://www.reddit.com/r/technology
+[2026-04-06 16:40:40] >>> Completed Scenario 1
