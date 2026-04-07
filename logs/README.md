@@ -32,11 +32,17 @@ Inside every `Phase_*` folder, you will find a standardized "Evidence Pack" for 
 
 | File Name | Purpose | Description |
 | :--- | :--- | :--- |
-| **`*.csv.gz`** | **The Feature Matrix** | The core ML input. Contains 31 columns of strictly aligned MAC layer grants, BSR/PHR triggers, and RRC Reconfigurations. |
-| **`labels.csv`** | **The Ground Truth** | Accurate timestamp pairs mapping exactly when an activity started and stopped. Used for supervised training. |
-| **`execution.log`** | **The Audit Trail** | A human-readable step-by-step trace of what the automation framework executed on the phone. |
-| **`session_meta.txt`** | **Random Sequence (Phase C)** | A comma-separated list defining exactly which activities were randomly chosen and chained in that specific batch. |
-| **`upload*.log`** | **Background Context** | Text logs capturing the `ping` outputs from background stress tests. |
+| **`session_random.csv.gz`** | **The Feature Matrix** | The core ML input. Contains 31 columns of strictly aligned MAC layer grants, BSR/PHR triggers, and RRC Reconfigurations. |
+| **`labels.csv`** | **The Ground Truth** | Accurate timestamp pairs mapping exactly when an activity started and stopped (e.g., `VoiceCall`, `START`, `16:23:58`). |
+| **`execution.log`** | **The Audit Trail** | A human-readable step-by-step trace of the automation framework (e.g., "Dialing 9310...", "Opening Chrome"). |
+| **`session_meta.txt`** | **Random Sequence** | A comma-separated list defining exactly which activities were randomly chosen and in what sequence for this specific batch. |
+| **`session_random.log`** | **Raw MobileInsight Log** | The raw text-decoded version of the Diag logs containing every single packet before it was filtered into the CSV matrix. |
+| **`session_random.mi2log.capture.log`** | **Diagnostic Output** | The standard output and status dump from the internal MobileInsight Python parser. |
+| **`radio_props_post_random_session.txt`** | **Hardware State** | A snapshot of the modem's physical properties (RSRP, RSRQ, band, cell ID) taken immediately after the session finishes. |
+| **`telephony_state_post_random_session.txt`** | **Network State** | A complete dump of the Android telephony registry (`dumpsys telephony.registry`), showing data connection states and active PLMN. |
+| **`upload_stress.log`** | **Foreground Payload** | Text log capturing the explicit `ping` output from a foreground Upload Stress scenario. |
+| **`upload_bg_full.log`** | **Background Payload 1** | Text log capturing the output of the background ping flood during a Full Stress scenario (Call+Upload+Download). |
+| **`upload_bg_dl.log`** | **Background Payload 2** | Text log capturing the output of the background ping flood during a simultaneous Download scenario. |
 
 ## 🧬 Key ML Features (The 31 Columns)
 
