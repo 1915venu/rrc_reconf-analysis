@@ -1,0 +1,187 @@
+[2026-04-07 17:08:26] Logs will be saved to: /home/venu/Desktop/ueautomation/logs/Phase_C_Batch_3_Chaos_20260407_170826
+[2026-04-07 17:08:26] >>> Starting Random Session (Dynamic RRC Training)
+[2026-04-07 17:08:28] Radio is OFF (Confirmed via Settings).
+[2026-04-07 17:08:35] Data Connection Established. Stabilizing for 2s...
+[2026-04-07 17:08:37] --- Activity 1/20: activity_browse (53 s) ---
+[2026-04-07 17:08:37]   -> Running: Browsing (53 s)
+[2026-04-07 17:08:37]      Visiting: https://www.google.com
+[2026-04-07 17:08:37] Opening URL: https://www.google.com
+[2026-04-07 17:08:47]      Visiting: https://www.cnn.com
+[2026-04-07 17:08:47] Opening URL: https://www.cnn.com
+[2026-04-07 17:08:57]      Visiting: https://www.cnn.com/world
+[2026-04-07 17:08:57] Opening URL: https://www.cnn.com/world
+[2026-04-07 17:09:08]      Visiting: https://www.theverge.com
+[2026-04-07 17:09:08] Opening URL: https://www.theverge.com
+[2026-04-07 17:09:18]      Visiting: https://www.reddit.com
+[2026-04-07 17:09:18] Opening URL: https://www.reddit.com
+[2026-04-07 17:09:29]      Visiting: https://www.reddit.com/r/technology
+[2026-04-07 17:09:29] Opening URL: https://www.reddit.com/r/technology
+[2026-04-07 17:09:41] --- Activity 2/20: activity_full_stress (84 s) ---
+[2026-04-07 17:09:41]   -> Running: FULL STRESS (Call+Upload+Download) (84 s)
+[2026-04-07 17:09:41]      >> Started background Upload (ping flood)
+[2026-04-07 17:09:41] Initiating call to 9310524847...
+[2026-04-07 17:09:47] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1775561987
+[2026-04-07 17:11:13] --- Activity 3/20: activity_data_toggle (79 s) ---
+[2026-04-07 17:11:13]   -> Running: Soft Data Toggle (RRC Reconf Trigger)
+[2026-04-07 17:11:13]      Disabling Mobile Data...
+[2026-04-07 17:11:20] Data Connection Established. Stabilizing for 2s...
+[2026-04-07 17:12:48] --- Activity 4/20: activity_browse (86 s) ---
+[2026-04-07 17:12:48]   -> Running: Browsing (86 s)
+[2026-04-07 17:12:48]      Visiting: https://www.google.com
+[2026-04-07 17:12:48] Opening URL: https://www.google.com
+[2026-04-07 17:12:59]      Visiting: https://www.cnn.com
+[2026-04-07 17:12:59] Opening URL: https://www.cnn.com
+[2026-04-07 17:13:09]      Visiting: https://www.cnn.com/world
+[2026-04-07 17:13:09] Opening URL: https://www.cnn.com/world
+[2026-04-07 17:13:19]      Visiting: https://www.theverge.com
+[2026-04-07 17:13:19] Opening URL: https://www.theverge.com
+[2026-04-07 17:13:30]      Visiting: https://www.reddit.com
+[2026-04-07 17:13:30] Opening URL: https://www.reddit.com
+[2026-04-07 17:13:40]      Visiting: https://www.reddit.com/r/technology
+[2026-04-07 17:13:40] Opening URL: https://www.reddit.com/r/technology
+[2026-04-07 17:13:50]      Visiting: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-07 17:13:50] Opening URL: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-07 17:14:01]      Visiting: https://www.bbc.com/news
+[2026-04-07 17:14:01] Opening URL: https://www.bbc.com/news
+[2026-04-07 17:14:11]      Visiting: https://www.bbc.com/sport
+[2026-04-07 17:14:11] Opening URL: https://www.bbc.com/sport
+[2026-04-07 17:14:24] --- Activity 5/20: activity_browse_download (82 s) ---
+[2026-04-07 17:14:24]   -> Running: Browse + Download (82 s)
+[2026-04-07 17:14:24] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1775562264
+[2026-04-07 17:14:29]   -> Running: Browsing (77 s)
+[2026-04-07 17:14:29]      Visiting: https://www.google.com
+[2026-04-07 17:14:29] Opening URL: https://www.google.com
+[2026-04-07 17:14:40]      Visiting: https://www.cnn.com
+[2026-04-07 17:14:40] Opening URL: https://www.cnn.com
+[2026-04-07 17:14:50]      Visiting: https://www.cnn.com/world
+[2026-04-07 17:14:50] Opening URL: https://www.cnn.com/world
+[2026-04-07 17:15:01]      Visiting: https://www.theverge.com
+[2026-04-07 17:15:01] Opening URL: https://www.theverge.com
+[2026-04-07 17:15:11]      Visiting: https://www.reddit.com
+[2026-04-07 17:15:11] Opening URL: https://www.reddit.com
+[2026-04-07 17:15:21]      Visiting: https://www.reddit.com/r/technology
+[2026-04-07 17:15:21] Opening URL: https://www.reddit.com/r/technology
+[2026-04-07 17:15:32]      Visiting: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-07 17:15:32] Opening URL: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-07 17:15:42]      Visiting: https://www.bbc.com/news
+[2026-04-07 17:15:42] Opening URL: https://www.bbc.com/news
+[2026-04-07 17:15:55] --- Activity 6/20: activity_data_toggle (51 s) ---
+[2026-04-07 17:15:55]   -> Running: Soft Data Toggle (RRC Reconf Trigger)
+[2026-04-07 17:15:55]      Disabling Mobile Data...
+[2026-04-07 17:16:02] Data Connection Established. Stabilizing for 2s...
+[2026-04-07 17:17:02] --- Activity 7/20: activity_browse_download (56 s) ---
+[2026-04-07 17:17:02]   -> Running: Browse + Download (56 s)
+[2026-04-07 17:17:02] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1775562422
+[2026-04-07 17:17:07]   -> Running: Browsing (51 s)
+[2026-04-07 17:17:07]      Visiting: https://www.google.com
+[2026-04-07 17:17:07] Opening URL: https://www.google.com
+[2026-04-07 17:17:18]      Visiting: https://www.cnn.com
+[2026-04-07 17:17:18] Opening URL: https://www.cnn.com
+[2026-04-07 17:17:28]      Visiting: https://www.cnn.com/world
+[2026-04-07 17:17:28] Opening URL: https://www.cnn.com/world
+[2026-04-07 17:17:38]      Visiting: https://www.theverge.com
+[2026-04-07 17:17:38] Opening URL: https://www.theverge.com
+[2026-04-07 17:17:49]      Visiting: https://www.reddit.com
+[2026-04-07 17:17:49] Opening URL: https://www.reddit.com
+[2026-04-07 17:18:05] --- Activity 8/20: activity_call (68 s) ---
+[2026-04-07 17:18:05]   -> Running: Voice Call (68 s) to 9310524847
+[2026-04-07 17:18:08] Initiating call to 9310524847...
+[2026-04-07 17:19:26] --- Activity 9/20: activity_data_toggle (90 s) ---
+[2026-04-07 17:19:26]   -> Running: Soft Data Toggle (RRC Reconf Trigger)
+[2026-04-07 17:19:26]      Disabling Mobile Data...
+[2026-04-07 17:19:32] Data Connection Established. Stabilizing for 2s...
+[2026-04-07 17:21:12] --- Activity 10/20: activity_call (63 s) ---
+[2026-04-07 17:21:12]   -> Running: Voice Call (63 s) to 9310524847
+[2026-04-07 17:21:15] Initiating call to 9310524847...
+[2026-04-07 17:22:27] --- Activity 11/20: activity_data_toggle (82 s) ---
+[2026-04-07 17:22:27]   -> Running: Soft Data Toggle (RRC Reconf Trigger)
+[2026-04-07 17:22:27]      Disabling Mobile Data...
+[2026-04-07 17:22:34] Data Connection Established. Stabilizing for 2s...
+[2026-04-07 17:24:05] --- Activity 12/20: activity_traffic_burst (89 s) ---
+[2026-04-07 17:24:05]   -> Running: Traffic Burst (Pulse Download) - 89 s
+[2026-04-07 17:24:05]      >> Burst: Download 5s
+[2026-04-07 17:24:05] Opening URL: https://fast.com
+[2026-04-07 17:24:15]      >> Burst: Download 5s
+[2026-04-07 17:24:15] Opening URL: https://fast.com
+[2026-04-07 17:24:26]      >> Burst: Download 5s
+[2026-04-07 17:24:26] Opening URL: https://fast.com
+[2026-04-07 17:24:36]      >> Burst: Download 5s
+[2026-04-07 17:24:36] Opening URL: https://fast.com
+[2026-04-07 17:24:46]      >> Burst: Download 5s
+[2026-04-07 17:24:46] Opening URL: https://fast.com
+[2026-04-07 17:24:56]      >> Burst: Download 5s
+[2026-04-07 17:24:56] Opening URL: https://fast.com
+[2026-04-07 17:25:06]      >> Burst: Download 5s
+[2026-04-07 17:25:06] Opening URL: https://fast.com
+[2026-04-07 17:25:17]      >> Burst: Download 5s
+[2026-04-07 17:25:17] Opening URL: https://fast.com
+[2026-04-07 17:25:27]      >> Burst: Download 5s
+[2026-04-07 17:25:27] Opening URL: https://fast.com
+[2026-04-07 17:25:44] --- Activity 13/20: activity_call_burst (64 s) ---
+[2026-04-07 17:25:44]   -> Running: Call + Traffic Burst (Pulse) (64 s)
+[2026-04-07 17:25:44] Initiating call to 9310524847...
+[2026-04-07 17:25:49]   -> Running: Traffic Burst (Pulse Download) - 59 s
+[2026-04-07 17:25:49]      >> Burst: Download 5s
+[2026-04-07 17:25:49] Opening URL: https://fast.com
+[2026-04-07 17:26:00]      >> Burst: Download 5s
+[2026-04-07 17:26:00] Opening URL: https://fast.com
+[2026-04-07 17:26:10]      >> Burst: Download 5s
+[2026-04-07 17:26:10] Opening URL: https://fast.com
+[2026-04-07 17:26:20]      >> Burst: Download 5s
+[2026-04-07 17:26:20] Opening URL: https://fast.com
+[2026-04-07 17:26:30]      >> Burst: Download 5s
+[2026-04-07 17:26:30] Opening URL: https://fast.com
+[2026-04-07 17:26:40]      >> Burst: Download 5s
+[2026-04-07 17:26:41] Opening URL: https://fast.com
+[2026-04-07 17:26:58] --- Activity 14/20: activity_data_toggle (69 s) ---
+[2026-04-07 17:26:58]   -> Running: Soft Data Toggle (RRC Reconf Trigger)
+[2026-04-07 17:26:58]      Disabling Mobile Data...
+[2026-04-07 17:27:05] Data Connection Established. Stabilizing for 2s...
+[2026-04-07 17:28:23] --- Activity 15/20: activity_browse (53 s) ---
+[2026-04-07 17:28:23]   -> Running: Browsing (53 s)
+[2026-04-07 17:28:23]      Visiting: https://www.google.com
+[2026-04-07 17:28:23] Opening URL: https://www.google.com
+[2026-04-07 17:28:33]      Visiting: https://www.cnn.com
+[2026-04-07 17:28:33] Opening URL: https://www.cnn.com
+[2026-04-07 17:28:44]      Visiting: https://www.cnn.com/world
+[2026-04-07 17:28:44] Opening URL: https://www.cnn.com/world
+[2026-04-07 17:28:54]      Visiting: https://www.theverge.com
+[2026-04-07 17:28:54] Opening URL: https://www.theverge.com
+[2026-04-07 17:29:04]      Visiting: https://www.reddit.com
+[2026-04-07 17:29:04] Opening URL: https://www.reddit.com
+[2026-04-07 17:29:15]      Visiting: https://www.reddit.com/r/technology
+[2026-04-07 17:29:15] Opening URL: https://www.reddit.com/r/technology
+[2026-04-07 17:29:28] --- Activity 16/20: activity_ping (79 s) ---
+[2026-04-07 17:29:28]   -> Running: Ping Test
+[2026-04-07 17:29:46] --- Activity 17/20: activity_upload (54 s) ---
+[2026-04-07 17:29:46]   -> Running: Upload Stress (Ping Flood) - 54 s
+[2026-04-07 17:29:46] Opening URL: https://www.google.com/search?q=upload+stress+test+active
+[2026-04-07 17:29:51]      Starting background ping flood (Log: /home/venu/Desktop/ueautomation/logs/Phase_C_Batch_3_Chaos_20260407_170826/upload_stress.log)...
+[2026-04-07 17:30:45]      Upload stress finished.
+[2026-04-07 17:30:53] --- Activity 18/20: activity_data_toggle (70 s) ---
+[2026-04-07 17:30:53]   -> Running: Soft Data Toggle (RRC Reconf Trigger)
+[2026-04-07 17:30:53]      Disabling Mobile Data...
+[2026-04-07 17:30:59] Data Connection Established. Stabilizing for 2s...
+[2026-04-07 17:32:18] --- Activity 19/20: activity_call_burst (68 s) ---
+[2026-04-07 17:32:18]   -> Running: Call + Traffic Burst (Pulse) (68 s)
+[2026-04-07 17:32:18] Initiating call to 9310524847...
+[2026-04-07 17:32:24]   -> Running: Traffic Burst (Pulse Download) - 63 s
+[2026-04-07 17:32:24]      >> Burst: Download 5s
+[2026-04-07 17:32:24] Opening URL: https://fast.com
+[2026-04-07 17:32:34]      >> Burst: Download 5s
+[2026-04-07 17:32:34] Opening URL: https://fast.com
+[2026-04-07 17:32:44]      >> Burst: Download 5s
+[2026-04-07 17:32:44] Opening URL: https://fast.com
+[2026-04-07 17:32:54]      >> Burst: Download 5s
+[2026-04-07 17:32:54] Opening URL: https://fast.com
+[2026-04-07 17:33:04]      >> Burst: Download 5s
+[2026-04-07 17:33:04] Opening URL: https://fast.com
+[2026-04-07 17:33:15]      >> Burst: Download 5s
+[2026-04-07 17:33:15] Opening URL: https://fast.com
+[2026-04-07 17:33:25]      >> Burst: Download 5s
+[2026-04-07 17:33:25] Opening URL: https://fast.com
+[2026-04-07 17:33:38] --- Activity 20/20: activity_call_download (69 s) ---
+[2026-04-07 17:33:38]   -> Running: Call + Download (69 s)
+[2026-04-07 17:33:38] Initiating call to 9310524847...
+[2026-04-07 17:33:43] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1775563423
+[2026-04-07 17:35:08] >>> Completed Random Session

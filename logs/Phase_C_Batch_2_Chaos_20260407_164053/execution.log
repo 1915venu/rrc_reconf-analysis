@@ -1,0 +1,133 @@
+[2026-04-07 16:40:53] Logs will be saved to: /home/venu/Desktop/ueautomation/logs/Phase_C_Batch_2_Chaos_20260407_164053
+[2026-04-07 16:40:53] >>> Starting Random Session (Dynamic RRC Training)
+[2026-04-07 16:40:55] Radio is OFF (Confirmed via Settings).
+[2026-04-07 16:42:14] --- Activity 1/16: activity_upload (49 s) ---
+[2026-04-07 16:42:14]   -> Running: Upload Stress (Ping Flood) - 49 s
+[2026-04-07 16:42:14] Opening URL: https://www.google.com/search?q=upload+stress+test+active
+[2026-04-07 16:42:19]      Starting background ping flood (Log: /home/venu/Desktop/ueautomation/logs/Phase_C_Batch_2_Chaos_20260407_164053/upload_stress.log)...
+[2026-04-07 16:43:08]      Upload stress finished.
+[2026-04-07 16:43:16] --- Activity 2/16: activity_data_toggle (88 s) ---
+[2026-04-07 16:43:16]   -> Running: Soft Data Toggle (RRC Reconf Trigger)
+[2026-04-07 16:43:16]      Disabling Mobile Data...
+[2026-04-07 16:46:11] --- Activity 3/16: activity_call_burst (50 s) ---
+[2026-04-07 16:46:11]   -> Running: Call + Traffic Burst (Pulse) (50 s)
+[2026-04-07 16:46:11] Initiating call to 9310524847...
+[2026-04-07 16:46:16]   -> Running: Traffic Burst (Pulse Download) - 45 s
+[2026-04-07 16:46:17]      >> Burst: Download 5s
+[2026-04-07 16:46:17] Opening URL: https://fast.com
+[2026-04-07 16:46:27]      >> Burst: Download 5s
+[2026-04-07 16:46:27] Opening URL: https://fast.com
+[2026-04-07 16:46:37]      >> Burst: Download 5s
+[2026-04-07 16:46:37] Opening URL: https://fast.com
+[2026-04-07 16:46:47]      >> Burst: Download 5s
+[2026-04-07 16:46:47] Opening URL: https://fast.com
+[2026-04-07 16:46:57]      >> Burst: Download 5s
+[2026-04-07 16:46:57] Opening URL: https://fast.com
+[2026-04-07 16:47:10] --- Activity 4/16: activity_browse (63 s) ---
+[2026-04-07 16:47:10]   -> Running: Browsing (63 s)
+[2026-04-07 16:47:10]      Visiting: https://www.google.com
+[2026-04-07 16:47:10] Opening URL: https://www.google.com
+[2026-04-07 16:47:20]      Visiting: https://www.cnn.com
+[2026-04-07 16:47:21] Opening URL: https://www.cnn.com
+[2026-04-07 16:47:31]      Visiting: https://www.cnn.com/world
+[2026-04-07 16:47:31] Opening URL: https://www.cnn.com/world
+[2026-04-07 16:47:41]      Visiting: https://www.theverge.com
+[2026-04-07 16:47:41] Opening URL: https://www.theverge.com
+[2026-04-07 16:47:52]      Visiting: https://www.reddit.com
+[2026-04-07 16:47:52] Opening URL: https://www.reddit.com
+[2026-04-07 16:48:02]      Visiting: https://www.reddit.com/r/technology
+[2026-04-07 16:48:02] Opening URL: https://www.reddit.com/r/technology
+[2026-04-07 16:48:12]      Visiting: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-07 16:48:12] Opening URL: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-07 16:48:25] --- Activity 5/16: activity_call_upload (78 s) ---
+[2026-04-07 16:48:25]   -> Running: Call + Upload (Ping) (78 s)
+[2026-04-07 16:48:25]      >> Started background Upload (ping flood)
+[2026-04-07 16:48:25]   -> Running: Voice Call (78 s) to 9310524847
+[2026-04-07 16:48:28] Initiating call to 9310524847...
+[2026-04-07 16:49:56] --- Activity 6/16: activity_browse (59 s) ---
+[2026-04-07 16:49:56]   -> Running: Browsing (59 s)
+[2026-04-07 16:49:56]      Visiting: https://www.google.com
+[2026-04-07 16:49:56] Opening URL: https://www.google.com
+[2026-04-07 16:50:06]      Visiting: https://www.cnn.com
+[2026-04-07 16:50:06] Opening URL: https://www.cnn.com
+[2026-04-07 16:50:16]      Visiting: https://www.cnn.com/world
+[2026-04-07 16:50:16] Opening URL: https://www.cnn.com/world
+[2026-04-07 16:50:27]      Visiting: https://www.theverge.com
+[2026-04-07 16:50:27] Opening URL: https://www.theverge.com
+[2026-04-07 16:50:37]      Visiting: https://www.reddit.com
+[2026-04-07 16:50:37] Opening URL: https://www.reddit.com
+[2026-04-07 16:50:47]      Visiting: https://www.reddit.com/r/technology
+[2026-04-07 16:50:47] Opening URL: https://www.reddit.com/r/technology
+[2026-04-07 16:51:03] --- Activity 7/16: activity_browse_download (81 s) ---
+[2026-04-07 16:51:03]   -> Running: Browse + Download (81 s)
+[2026-04-07 16:51:03] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1775560863
+[2026-04-07 16:51:09]   -> Running: Browsing (76 s)
+[2026-04-07 16:51:09]      Visiting: https://www.google.com
+[2026-04-07 16:51:09] Opening URL: https://www.google.com
+[2026-04-07 16:51:19]      Visiting: https://www.cnn.com
+[2026-04-07 16:51:19] Opening URL: https://www.cnn.com
+[2026-04-07 16:51:29]      Visiting: https://www.cnn.com/world
+[2026-04-07 16:51:29] Opening URL: https://www.cnn.com/world
+[2026-04-07 16:51:40]      Visiting: https://www.theverge.com
+[2026-04-07 16:51:40] Opening URL: https://www.theverge.com
+[2026-04-07 16:51:50]      Visiting: https://www.reddit.com
+[2026-04-07 16:51:50] Opening URL: https://www.reddit.com
+[2026-04-07 16:52:01]      Visiting: https://www.reddit.com/r/technology
+[2026-04-07 16:52:01] Opening URL: https://www.reddit.com/r/technology
+[2026-04-07 16:52:11]      Visiting: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-07 16:52:11] Opening URL: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-07 16:52:21]      Visiting: https://www.bbc.com/news
+[2026-04-07 16:52:21] Opening URL: https://www.bbc.com/news
+[2026-04-07 16:52:34] --- Activity 8/16: activity_call (61 s) ---
+[2026-04-07 16:52:34]   -> Running: Voice Call (61 s) to 9310524847
+[2026-04-07 16:52:37] Initiating call to 9310524847...
+[2026-04-07 16:53:48] --- Activity 9/16: activity_upload (79 s) ---
+[2026-04-07 16:53:48]   -> Running: Upload Stress (Ping Flood) - 79 s
+[2026-04-07 16:53:48] Opening URL: https://www.google.com/search?q=upload+stress+test+active
+[2026-04-07 16:53:53]      Starting background ping flood (Log: /home/venu/Desktop/ueautomation/logs/Phase_C_Batch_2_Chaos_20260407_164053/upload_stress.log)...
+[2026-04-07 16:55:12]      Upload stress finished.
+[2026-04-07 16:55:19] --- Activity 10/16: activity_full_stress (47 s) ---
+[2026-04-07 16:55:19]   -> Running: FULL STRESS (Call+Upload+Download) (47 s)
+[2026-04-07 16:55:19]      >> Started background Upload (ping flood)
+[2026-04-07 16:55:19] Initiating call to 9310524847...
+[2026-04-07 16:55:25] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1775561125
+[2026-04-07 16:56:14] --- Activity 11/16: activity_upload (73 s) ---
+[2026-04-07 16:56:14]   -> Running: Upload Stress (Ping Flood) - 73 s
+[2026-04-07 16:56:14] Opening URL: https://www.google.com/search?q=upload+stress+test+active
+[2026-04-07 16:56:19]      Starting background ping flood (Log: /home/venu/Desktop/ueautomation/logs/Phase_C_Batch_2_Chaos_20260407_164053/upload_stress.log)...
+[2026-04-07 16:57:33]      Upload stress finished.
+[2026-04-07 16:57:40] --- Activity 12/16: activity_data_toggle (71 s) ---
+[2026-04-07 16:57:40]   -> Running: Soft Data Toggle (RRC Reconf Trigger)
+[2026-04-07 16:57:40]      Disabling Mobile Data...
+[2026-04-07 17:00:18] --- Activity 13/16: activity_browse_download (65 s) ---
+[2026-04-07 17:00:18]   -> Running: Browse + Download (65 s)
+[2026-04-07 17:00:19] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1775561419
+[2026-04-07 17:00:24]   -> Running: Browsing (60 s)
+[2026-04-07 17:00:24]      Visiting: https://www.google.com
+[2026-04-07 17:00:24] Opening URL: https://www.google.com
+[2026-04-07 17:00:34]      Visiting: https://www.cnn.com
+[2026-04-07 17:00:34] Opening URL: https://www.cnn.com
+[2026-04-07 17:00:45]      Visiting: https://www.cnn.com/world
+[2026-04-07 17:00:45] Opening URL: https://www.cnn.com/world
+[2026-04-07 17:00:55]      Visiting: https://www.theverge.com
+[2026-04-07 17:00:55] Opening URL: https://www.theverge.com
+[2026-04-07 17:01:05]      Visiting: https://www.reddit.com
+[2026-04-07 17:01:05] Opening URL: https://www.reddit.com
+[2026-04-07 17:01:16]      Visiting: https://www.reddit.com/r/technology
+[2026-04-07 17:01:16] Opening URL: https://www.reddit.com/r/technology
+[2026-04-07 17:01:32] --- Activity 14/16: activity_data_toggle (70 s) ---
+[2026-04-07 17:01:32]   -> Running: Soft Data Toggle (RRC Reconf Trigger)
+[2026-04-07 17:01:32]      Disabling Mobile Data...
+[2026-04-07 17:04:09] --- Activity 15/16: activity_full_stress (78 s) ---
+[2026-04-07 17:04:09]   -> Running: FULL STRESS (Call+Upload+Download) (78 s)
+[2026-04-07 17:04:09]      >> Started background Upload (ping flood)
+[2026-04-07 17:04:09] Initiating call to 9310524847...
+[2026-04-07 17:04:15] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1775561655
+[2026-04-07 17:05:35] --- Activity 16/16: activity_idle (64 s) ---
+[2026-04-07 17:05:35]   -> Running: Idle (10 s)
+[2026-04-07 17:05:52] --- Final Activity (YouTube - always last): activity_download_youtube (54 s) ---
+[2026-04-07 17:05:53]   -> Running: Download (BG) + YouTube (FG) (54 s)
+[2026-04-07 17:05:53] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1775561753
+[2026-04-07 17:05:58]   -> Running: YouTube (49 s)
+[2026-04-07 17:05:58] Opening YouTube: https://www.youtube.com/watch?v=LXb3EKWsInQ
+[2026-04-07 17:07:53] >>> Completed Random Session

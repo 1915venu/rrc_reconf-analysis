@@ -1,0 +1,1 @@
+Session Sequence: activity_data_toggle(53),activity_browse(90),activity_call(90),activity_traffic_burst(82),activity_data_toggle(56),activity_data_toggle(53),activity_upload_download(84),activity_call(63),activity_upload_download(88),

@@ -1,0 +1,47 @@
+[2026-04-07 17:49:19] Logs will be saved to: /home/venu/Desktop/ueautomation/logs/Phase_C_Batch_5_Chaos_20260407_174919
+[2026-04-07 17:49:19] >>> Starting Random Session (Dynamic RRC Training)
+[2026-04-07 17:49:21] Radio is OFF (Confirmed via Settings).
+[2026-04-07 17:49:26] Data Connection Established. Stabilizing for 2s...
+[2026-04-07 17:49:28] --- Activity 1/4: activity_call_burst (69 s) ---
+[2026-04-07 17:49:28]   -> Running: Call + Traffic Burst (Pulse) (69 s)
+[2026-04-07 17:49:28] Initiating call to 9310524847...
+[2026-04-07 17:49:34]   -> Running: Traffic Burst (Pulse Download) - 64 s
+[2026-04-07 17:49:34]      >> Burst: Download 5s
+[2026-04-07 17:49:34] Opening URL: https://fast.com
+[2026-04-07 17:49:44]      >> Burst: Download 5s
+[2026-04-07 17:49:44] Opening URL: https://fast.com
+[2026-04-07 17:49:54]      >> Burst: Download 5s
+[2026-04-07 17:49:54] Opening URL: https://fast.com
+[2026-04-07 17:50:05]      >> Burst: Download 5s
+[2026-04-07 17:50:05] Opening URL: https://fast.com
+[2026-04-07 17:50:15]      >> Burst: Download 5s
+[2026-04-07 17:50:15] Opening URL: https://fast.com
+[2026-04-07 17:50:25]      >> Burst: Download 5s
+[2026-04-07 17:50:25] Opening URL: https://fast.com
+[2026-04-07 17:50:36]      >> Burst: Download 5s
+[2026-04-07 17:50:36] Opening URL: https://fast.com
+[2026-04-07 17:50:48] --- Activity 2/4: activity_call_download (63 s) ---
+[2026-04-07 17:50:48]   -> Running: Call + Download (63 s)
+[2026-04-07 17:50:48] Initiating call to 9310524847...
+[2026-04-07 17:50:54] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1775564454
+[2026-04-07 17:52:00] --- Activity 3/4: activity_browse_download (68 s) ---
+[2026-04-07 17:52:00]   -> Running: Browse + Download (68 s)
+[2026-04-07 17:52:00] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1775564520
+[2026-04-07 17:52:05]   -> Running: Browsing (63 s)
+[2026-04-07 17:52:05]      Visiting: https://www.google.com
+[2026-04-07 17:52:05] Opening URL: https://www.google.com
+[2026-04-07 17:52:16]      Visiting: https://www.cnn.com
+[2026-04-07 17:52:16] Opening URL: https://www.cnn.com
+[2026-04-07 17:52:26]      Visiting: https://www.cnn.com/world
+[2026-04-07 17:52:26] Opening URL: https://www.cnn.com/world
+[2026-04-07 17:52:37]      Visiting: https://www.theverge.com
+[2026-04-07 17:52:37] Opening URL: https://www.theverge.com
+[2026-04-07 17:52:47]      Visiting: https://www.reddit.com
+[2026-04-07 17:52:47] Opening URL: https://www.reddit.com
+[2026-04-07 17:52:58]      Visiting: https://www.reddit.com/r/technology
+[2026-04-07 17:52:58] Opening URL: https://www.reddit.com/r/technology
+[2026-04-07 17:53:16] --- Activity 4/4: activity_data_toggle (74 s) ---
+[2026-04-07 17:53:16]   -> Running: Soft Data Toggle (RRC Reconf Trigger)
+[2026-04-07 17:53:16]      Disabling Mobile Data...
+[2026-04-07 17:53:22] Data Connection Established. Stabilizing for 2s...
+[2026-04-07 17:54:51] >>> Completed Random Session
