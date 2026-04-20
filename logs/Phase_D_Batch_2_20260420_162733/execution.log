@@ -1,0 +1,143 @@
+[2026-04-20 16:27:33] Logs will be saved to: /home/venu/Desktop/ueautomation/logs/Phase_D_Batch_2_20260420_162733
+[2026-04-20 16:27:33] >>> Starting Random Session (Dynamic RRC Training)
+[2026-04-20 16:27:35] Radio is OFF (Confirmed via Settings).
+[2026-04-20 16:27:42] Data Connection Established. Stabilizing for 2s...
+[2026-04-20 16:27:44] --- Activity 1/20: activity_browse (70 s) ---
+[2026-04-20 16:27:44]   -> Running: Browsing (70 s)
+[2026-04-20 16:27:44]      Visiting: https://www.google.com
+[2026-04-20 16:27:44] Opening URL: https://www.google.com
+[2026-04-20 16:27:54]      Visiting: https://www.cnn.com
+[2026-04-20 16:27:54] Opening URL: https://www.cnn.com
+[2026-04-20 16:28:05]      Visiting: https://www.cnn.com/world
+[2026-04-20 16:28:05] Opening URL: https://www.cnn.com/world
+[2026-04-20 16:28:16]      Visiting: https://www.theverge.com
+[2026-04-20 16:28:16] Opening URL: https://www.theverge.com
+[2026-04-20 16:28:26]      Visiting: https://www.reddit.com
+[2026-04-20 16:28:26] Opening URL: https://www.reddit.com
+[2026-04-20 16:28:37]      Visiting: https://www.reddit.com/r/technology
+[2026-04-20 16:28:37] Opening URL: https://www.reddit.com/r/technology
+[2026-04-20 16:28:47]      Visiting: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-20 16:28:47] Opening URL: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-20 16:29:02] --- Activity 2/20: activity_call (88 s) ---
+[2026-04-20 16:29:02]   -> Running: Voice Call (88 s) to 9310524847
+[2026-04-20 16:29:05] Initiating call to 9310524847...
+[2026-04-20 16:30:42] --- Activity 3/20: activity_call_download (86 s) ---
+[2026-04-20 16:30:42]   -> Running: Call + Download (86 s)
+[2026-04-20 16:30:42] Initiating call to 9310524847...
+[2026-04-20 16:30:48] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1776682848
+[2026-04-20 16:32:17] --- Activity 4/20: activity_call_burst (69 s) ---
+[2026-04-20 16:32:17]   -> Running: Call + Traffic Burst (Pulse) (69 s)
+[2026-04-20 16:32:17] Initiating call to 9310524847...
+[2026-04-20 16:32:22]   -> Running: Traffic Burst (Pulse Download) - 64 s
+[2026-04-20 16:32:22]      >> Burst: Download 5s
+[2026-04-20 16:32:22] Opening URL: https://fast.com
+[2026-04-20 16:32:32]      >> Burst: Download 5s
+[2026-04-20 16:32:32] Opening URL: https://fast.com
+[2026-04-20 16:32:43]      >> Burst: Download 5s
+[2026-04-20 16:32:43] Opening URL: https://fast.com
+[2026-04-20 16:32:53]      >> Burst: Download 5s
+[2026-04-20 16:32:53] Opening URL: https://fast.com
+[2026-04-20 16:33:03]      >> Burst: Download 5s
+[2026-04-20 16:33:03] Opening URL: https://fast.com
+[2026-04-20 16:33:13]      >> Burst: Download 5s
+[2026-04-20 16:33:13] Opening URL: https://fast.com
+[2026-04-20 16:33:24]      >> Burst: Download 5s
+[2026-04-20 16:33:24] Opening URL: https://fast.com
+[2026-04-20 16:33:37] --- Activity 5/20: activity_download (52 s) ---
+[2026-04-20 16:33:37]   -> Running: Download 100MB (52 s window)
+[2026-04-20 16:33:37] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1776683017
+[2026-04-20 16:34:37] --- Activity 6/20: activity_traffic_burst (46 s) ---
+[2026-04-20 16:34:37]   -> Running: Traffic Burst (Pulse Download) - 46 s
+[2026-04-20 16:34:37]      >> Burst: Download 5s
+[2026-04-20 16:34:37] Opening URL: https://fast.com
+[2026-04-20 16:34:47]      >> Burst: Download 5s
+[2026-04-20 16:34:47] Opening URL: https://fast.com
+[2026-04-20 16:34:57]      >> Burst: Download 5s
+[2026-04-20 16:34:57] Opening URL: https://fast.com
+[2026-04-20 16:35:08]      >> Burst: Download 5s
+[2026-04-20 16:35:08] Opening URL: https://fast.com
+[2026-04-20 16:35:18]      >> Burst: Download 5s
+[2026-04-20 16:35:18] Opening URL: https://fast.com
+[2026-04-20 16:35:30] --- Activity 7/20: activity_browse (86 s) ---
+[2026-04-20 16:35:30]   -> Running: Browsing (86 s)
+[2026-04-20 16:35:30]      Visiting: https://www.google.com
+[2026-04-20 16:35:30] Opening URL: https://www.google.com
+[2026-04-20 16:35:41]      Visiting: https://www.cnn.com
+[2026-04-20 16:35:41] Opening URL: https://www.cnn.com
+[2026-04-20 16:35:51]      Visiting: https://www.cnn.com/world
+[2026-04-20 16:35:51] Opening URL: https://www.cnn.com/world
+[2026-04-20 16:36:02]      Visiting: https://www.theverge.com
+[2026-04-20 16:36:02] Opening URL: https://www.theverge.com
+[2026-04-20 16:36:12]      Visiting: https://www.reddit.com
+[2026-04-20 16:36:12] Opening URL: https://www.reddit.com
+[2026-04-20 16:36:23]      Visiting: https://www.reddit.com/r/technology
+[2026-04-20 16:36:23] Opening URL: https://www.reddit.com/r/technology
+[2026-04-20 16:36:33]      Visiting: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-20 16:36:33] Opening URL: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-20 16:36:44]      Visiting: https://www.bbc.com/news
+[2026-04-20 16:36:44] Opening URL: https://www.bbc.com/news
+[2026-04-20 16:36:55]      Visiting: https://www.bbc.com/sport
+[2026-04-20 16:36:55] Opening URL: https://www.bbc.com/sport
+[2026-04-20 16:37:07] --- Activity 8/20: activity_call_burst (80 s) ---
+[2026-04-20 16:37:07]   -> Running: Call + Traffic Burst (Pulse) (80 s)
+[2026-04-20 16:37:07] Initiating call to 9310524847...
+[2026-04-20 16:37:13]   -> Running: Traffic Burst (Pulse Download) - 75 s
+[2026-04-20 16:37:13]      >> Burst: Download 5s
+[2026-04-20 16:37:13] Opening URL: https://fast.com
+[2026-04-20 16:37:23]      >> Burst: Download 5s
+[2026-04-20 16:37:23] Opening URL: https://fast.com
+[2026-04-20 16:37:33]      >> Burst: Download 5s
+[2026-04-20 16:37:33] Opening URL: https://fast.com
+[2026-04-20 16:37:44]      >> Burst: Download 5s
+[2026-04-20 16:37:44] Opening URL: https://fast.com
+[2026-04-20 16:37:54]      >> Burst: Download 5s
+[2026-04-20 16:37:54] Opening URL: https://fast.com
+[2026-04-20 16:38:04]      >> Burst: Download 5s
+[2026-04-20 16:38:04] Opening URL: https://fast.com
+[2026-04-20 16:38:15]      >> Burst: Download 5s
+[2026-04-20 16:38:15] Opening URL: https://fast.com
+[2026-04-20 16:38:25]      >> Burst: Download 5s
+[2026-04-20 16:38:25] Opening URL: https://fast.com
+[2026-04-20 16:38:38] --- Activity 9/20: activity_call (69 s) ---
+[2026-04-20 16:38:38]   -> Running: Voice Call (69 s) to 9310524847
+[2026-04-20 16:38:41] Initiating call to 9310524847...
+[2026-04-20 16:39:59] --- Activity 10/20: activity_traffic_burst (62 s) ---
+[2026-04-20 16:39:59]   -> Running: Traffic Burst (Pulse Download) - 62 s
+[2026-04-20 16:39:59]      >> Burst: Download 5s
+[2026-04-20 16:39:59] Opening URL: https://fast.com
+[2026-04-20 16:40:10]      >> Burst: Download 5s
+[2026-04-20 16:40:10] Opening URL: https://fast.com
+[2026-04-20 16:40:20]      >> Burst: Download 5s
+[2026-04-20 16:40:20] Opening URL: https://fast.com
+[2026-04-20 16:40:30]      >> Burst: Download 5s
+[2026-04-20 16:40:30] Opening URL: https://fast.com
+[2026-04-20 16:40:41]      >> Burst: Download 5s
+[2026-04-20 16:40:41] Opening URL: https://fast.com
+[2026-04-20 16:40:51]      >> Burst: Download 5s
+[2026-04-20 16:40:51] Opening URL: https://fast.com
+[2026-04-20 16:41:08] --- Activity 11/20: activity_browse_download (71 s) ---
+[2026-04-20 16:41:08]   -> Running: Browse + Download (71 s)
+[2026-04-20 16:41:08] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1776683468
+[2026-04-20 16:41:14]   -> Running: Browsing (66 s)
+[2026-04-20 16:41:14]      Visiting: https://www.google.com
+[2026-04-20 16:41:14] Opening URL: https://www.google.com
+[2026-04-20 16:41:24]      Visiting: https://www.cnn.com
+[2026-04-20 16:41:24] Opening URL: https://www.cnn.com
+[2026-04-20 16:41:35]      Visiting: https://www.cnn.com/world
+[2026-04-20 16:41:35] Opening URL: https://www.cnn.com/world
+[2026-04-20 16:41:45]      Visiting: https://www.theverge.com
+[2026-04-20 16:41:45] Opening URL: https://www.theverge.com
+[2026-04-20 16:41:56]      Visiting: https://www.reddit.com
+[2026-04-20 16:41:56] Opening URL: https://www.reddit.com
+[2026-04-20 16:42:06]      Visiting: https://www.reddit.com/r/technology
+[2026-04-20 16:42:06] Opening URL: https://www.reddit.com/r/technology
+[2026-04-20 16:42:17]      Visiting: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-20 16:42:17] Opening URL: https://en.m.wikipedia.org/wiki/Special:Random
+[2026-04-20 16:42:30] --- Activity 12/20: activity_browse (70 s) ---
+[2026-04-20 16:42:30]   -> Running: Browsing (70 s)
+[2026-04-20 16:42:30]      Visiting: https://www.google.com
+[2026-04-20 16:42:30] Opening URL: https://www.google.com
+[2026-04-20 16:42:40]      Visiting: https://www.cnn.com
+[2026-04-20 16:42:40] Opening URL: https://www.cnn.com
+[2026-04-20 16:42:51]      Visiting: https://www.cnn.com/world
+[2026-04-20 16:42:51] Opening URL: https://www.cnn.com/world

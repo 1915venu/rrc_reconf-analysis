@@ -24,6 +24,12 @@ The data collection campaign is split into three distinct phases to ensure the M
 *   In these files, activities overlap (e.g., streaming YouTube *while* receiving a phone call *while* a background upload occurs).
 *   This teaches the model not to just memorize scripts, but to actually understand complex feature profiles.
 
+### 4. Phase D: The PHY Breakthrough (49 Columns)
+**Goal:** Integrating reverse-engineered Qualcomm physical layer tensors.
+*   Unlike Phases A/B/C (31 columns), Phase D includes **49 columns**.
+*   We successfully cracked the Snapdragon 8 Gen 2 proprietary `0x3B` Physical layer packet format.
+*   Phase D logs natively include `PHY_RSRP`, `PHY_RSRQ`, and `PHY_SNR`, capturing up to 100,000 continuous RF physical samples per batch to predict `MobilityControlInfo` (Handovers).
+
 ---
 
 ## 🗄️ File Manifest (What's in every folder)
@@ -44,10 +50,11 @@ Inside every `Phase_*` folder, you will find a standardized "Evidence Pack" for 
 | **`upload_bg_full.log`** | **Background Payload 1** | Text log capturing the output of the background ping flood during a Full Stress scenario (Call+Upload+Download). |
 | **`upload_bg_dl.log`** | **Background Payload 2** | Text log capturing the output of the background ping flood during a simultaneous Download scenario. |
 
-## 🧬 Key ML Features (The 31 Columns)
+## 🧬 Key ML Features (The Columns)
 
 The CSVs extract data into perfectly flat timestamps for Time-Series forecasting. Key features include:
 
+*   **L1 Physical Features:** (Phase D ONLY) `PHY_RSRP`, `PHY_RSRQ`, `PHY_SNR`, `PHY_Rank`, `PHY_CQI`.
 *   **L2 Traffic Features:** `Grant_Bytes`, `Has_SBSR`/`Has_LBSR`, `Has_PHR`, `Num_Data_LCIDs`.
 *   **L3 State Features:** Binary triggers for critical events like `Is_RRC_Reconf`, `Target_MeasConfig`, `Target_Handover`, `Target_DRB_Setup`.
 *   **RRC Detail:** A concatenated string defining the specific IE changes (e.g., `MeasConfig|Handover|TargetPCI=84`).

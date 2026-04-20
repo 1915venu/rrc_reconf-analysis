@@ -1,0 +1,17 @@
+[2026-04-20 15:52:57] Logs will be saved to: /home/venu/Desktop/ueautomation/logs/Phase_D_Batch_1_20260420_155257
+[2026-04-20 15:52:57] >>> Starting Random Session (Dynamic RRC Training)
+[2026-04-20 15:52:59] Radio is OFF (Confirmed via Settings).
+[2026-04-20 15:53:07] Data Connection Established. Stabilizing for 2s...
+[2026-04-20 15:53:09] --- Activity 1/2: activity_call (70 s) ---
+[2026-04-20 15:53:09]   -> Running: Voice Call (70 s) to 9310524847
+[2026-04-20 15:53:12] Initiating call to 9310524847...
+[2026-04-20 15:54:31] --- Activity 2/2: activity_data_toggle (65 s) ---
+[2026-04-20 15:54:32]   -> Running: Soft Data Toggle (RRC Reconf Trigger)
+[2026-04-20 15:54:32]      Disabling Mobile Data...
+[2026-04-20 15:54:38] Data Connection Established. Stabilizing for 2s...
+[2026-04-20 15:55:52] --- Final Activity (YouTube - always last): activity_download_youtube (72 s) ---
+[2026-04-20 15:55:52]   -> Running: Download (BG) + YouTube (FG) (72 s)
+[2026-04-20 15:55:52] Opening URL: https://ash-speed.hetzner.com/100MB.bin?t=1776680752
+[2026-04-20 15:55:58]   -> Running: YouTube (67 s)
+[2026-04-20 15:55:58] Opening YouTube: https://www.youtube.com/watch?v=kJQP7kiw5Fk
+[2026-04-20 15:58:23] >>> Completed Random Session
