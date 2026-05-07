@@ -41,7 +41,7 @@
 
 ### One-line summary
 
-The pipeline is complete and validated end-to-end. Data quality is consistently high. Model performance is showing **statistical progress** — LOBO mean is at an all-time high (0.110), 5 folds now exceed 0.13 AUC-PR (vs only 1 at 8 batches), and PHY features dominate the top 10. Need ~6 more days of collection at current pace to reach the 3,000-positive milestone.
+The pipeline is complete and validated end-to-end. Data quality is consistently high. Model performance is showing **statistical progress** — LOBO mean is at an all-time high (0.110), 5 folds now exceed 0.13 AUC-PR (vs only 1 at 8 batches), and PHY features dominate the top 10.
 
 ---
 
