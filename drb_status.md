@@ -361,6 +361,5 @@ From the `out_has_reconf` model:
 | **D. Fix binary baseline** | Push `out_has_reconf` AUC-PR from 0.30 → 0.50+. Feature pruning, leakage audit on `time_since_last_reconf_ms`, split-by-time instead of split-by-batch | Low–Medium | Credible baseline before reaching for content prediction |
 | **E. Hierarchical model** | Two-stage: predict `has_reconf` first, then conditional on positives predict params using a model trained only on the 331 DRB-setup windows | Low | Concentrates learning capacity on the rare-event subset; may unstick multiclass models |
 
-**Suggested next:** pursue **A**, **B**, and **D** in parallel using the current dataset. Begin **C** if lab time permits.
 
 ---
